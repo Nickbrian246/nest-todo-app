@@ -1,45 +1,42 @@
 import { Injectable } from '@nestjs/common';
-import { Task, TaskStatus } from './task.entity';
-import { v4 } from 'uuid';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Task as TaskSchema } from 'src/schemas/task.schema';
+import { CreateTask, DeleteTask, UpdateTask } from './dto';
 // aqui es donde crearemos nuestros metodos es como utils
+// aqui es donde se usan  los tdo
 @Injectable()
 export class TaskService {
-  private task: Task[] = [
-    {
-      id: '2',
-      description: 'hola',
-      title: 'hacer tarea',
-      status: TaskStatus.PENDING,
-    },
-  ];
+  constructor(
+    @InjectModel(TaskSchema.name) private TaskModel: Model<TaskSchema>,
+  ) {}
 
-  getTasks() {
-    return this.task;
+  async getTasks() {
+    return await this.TaskModel.find();
+  }
+  async getTaskByClient(clientId: any) {
+    const { id } = clientId;
+    return await this.TaskModel.find({ client: id });
   }
 
-  createTasks(task: Task) {
-    return this.task.push({ ...task, id: v4() });
+  async createTasks(task: CreateTask) {
+    return await this.TaskModel.create(task);
   }
 
-  updateTask(newTask: Task) {
-    const { id } = newTask;
-    const groupTaskUpdated = this.task.map((task) => {
-      if (task.id === id) {
-        return newTask;
-      } else {
-        return newTask;
-      }
-    });
-    this.task = groupTaskUpdated;
+  async updateTask(newTask: UpdateTask) {
+    const { id, client } = newTask;
+    const task = await this.TaskModel.findByIdAndUpdate(
+      { _id: id, client },
+      newTask,
+    );
 
-    return 'actualizado correctamente';
+    return task;
   }
 
-  deleteTasks(taskId: Task) {
-    const { id } = taskId;
-    const groupOfTaskWithoutTask = this.task.filter((task) => task.id !== id);
-    this.task = groupOfTaskWithoutTask;
+  async deleteTasks(taskId: DeleteTask) {
+    const { id, client } = taskId;
+    const taskDelete = await this.TaskModel.deleteOne({ _id: id, client });
 
-    return id;
+    return taskDelete;
   }
 }

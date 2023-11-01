@@ -1,6 +1,16 @@
-import { Controller, Get, Post, Body, Put, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Delete,
+  Param,
+} from '@nestjs/common';
 import { TaskService } from './task.service';
-
+import { Task, DeleteTask } from './dto';
+//nota controller clinte
+// service base de datos
 @Controller('task')
 export class TaskController {
   constructor(private tasksService: TaskService) {}
@@ -9,9 +19,13 @@ export class TaskController {
   getAllTasks() {
     return this.tasksService.getTasks();
   }
+  @Get(':id')
+  getAllTaskByClient(@Param() req: string) {
+    return this.tasksService.getTaskByClient(req);
+  }
 
   @Post()
-  createTask(@Body() req: any) {
+  createTask(@Body() req: Task) {
     return this.tasksService.createTasks(req);
   }
 
@@ -21,7 +35,7 @@ export class TaskController {
   }
 
   @Delete()
-  deleteTask(@Body() req: any) {
+  deleteTask(@Body() req: DeleteTask) {
     return this.tasksService.deleteTasks(req);
   }
 }
