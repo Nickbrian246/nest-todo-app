@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TaskModule } from './task/task.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ToDoTaskModule } from './to-do-task/to-do-task.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     MongooseModule.forRoot(
       'mongodb://nick1234:NCkWNVinhgNg0tlZ@ac-s72quvt-shard-00-00.iy1wgbo.mongodb.net:27017,ac-s72quvt-shard-00-01.iy1wgbo.mongodb.net:27017,ac-s72quvt-shard-00-02.iy1wgbo.mongodb.net:27017/?ssl=true&replicaSet=atlas-xb24t3-shard-0&authSource=admin&retryWrites=true&w=majority',
     ),
+    ToDoTaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],
