@@ -16,7 +16,7 @@ export class Task {
 
   @Prop({
     unique: false,
-    required: true,
+    required: false,
     trim: true,
   })
   description: string;

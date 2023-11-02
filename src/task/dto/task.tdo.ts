@@ -6,7 +6,6 @@ export class Task {
   title: string;
 
   @IsString()
-  @IsNotEmpty()
   description: string;
 
   @IsString()
