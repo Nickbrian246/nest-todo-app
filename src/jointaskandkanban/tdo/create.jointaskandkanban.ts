@@ -1,16 +1,21 @@
-import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
-
+import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { TaskStatus } from '../interfaces';
 export class CreateJoinTaskAndKanbanTdo {
   @IsString()
   @IsNotEmpty()
   title: string;
 
   @IsBoolean()
-  @IsNotEmpty()
+  @IsOptional()
   isDone: boolean;
+
+  @IsString()
+  @IsOptional()
+  description: string;
+
   @IsString()
   @IsNotEmpty()
-  taskStatus: string;
+  taskStatus: TaskStatus;
 
   @IsString()
   @IsNotEmpty()
