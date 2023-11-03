@@ -4,6 +4,7 @@ export interface KanbanTask {
   description: string;
   taskStatus: TaskStatus;
   client: string;
+  commonId: string;
 }
 
 export interface UpdateKanbanTask extends KanbanTask {

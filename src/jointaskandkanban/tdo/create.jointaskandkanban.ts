@@ -14,10 +14,14 @@ export class CreateJoinTaskAndKanbanTdo {
   description: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   taskStatus: TaskStatus;
 
   @IsString()
   @IsNotEmpty()
   client: string;
+
+  @IsOptional()
+  @IsString()
+  commonId: string;
 }

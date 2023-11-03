@@ -12,6 +12,10 @@ export class Task {
   @IsNotEmpty()
   taskStatus: taskStatus;
 
+  @IsOptional()
+  @IsString()
+  commonId: string;
+
   @IsNotEmpty()
   @IsString()
   client: string;
@@ -33,6 +37,10 @@ export class UpdateTask {
 
   @IsString()
   id: string;
+
+  @IsOptional()
+  @IsString()
+  commonId: string;
 }
 
 export class CreateTask {
@@ -51,10 +59,18 @@ export class CreateTask {
   @IsNotEmpty()
   @IsString()
   client: string;
+
+  @IsOptional()
+  @IsString()
+  commonId: string;
 }
 export class DeleteTask {
   @IsString()
   id: string;
   @IsString()
   client: string;
+
+  @IsOptional()
+  @IsString()
+  commonId: string;
 }

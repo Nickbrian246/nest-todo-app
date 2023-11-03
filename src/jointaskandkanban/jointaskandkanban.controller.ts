@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Post, Put, Res } from '@nestjs/common';
 import { JointaskandkanbanService } from './jointaskandkanban.service';
 import {
   UpdateJoinTaskAndKanbanTdo,
@@ -11,17 +11,26 @@ export class JointaskandkanbanController {
   constructor(private JoinTasks: JointaskandkanbanService) {}
 
   @Post()
-  createTask(@Body() req: CreateJoinTaskAndKanbanTdo) {
-    return this.JoinTasks.createTask(req);
+  createTask(
+    @Body() req: { data: CreateJoinTaskAndKanbanTdo[] },
+    @Res() res: any,
+  ) {
+    return this.JoinTasks.createTask(req.data, res);
   }
 
   @Put()
-  updateTask(@Body() req: UpdateJoinTaskAndKanbanTdo) {
-    return this.JoinTasks.updatTask(req);
+  updateTask(
+    @Body() req: { data: UpdateJoinTaskAndKanbanTdo[] },
+    @Res() res: any,
+  ) {
+    return this.JoinTasks.updatTask(req.data, res);
   }
 
   @Delete()
-  deleteTask(@Body() req: DeleteJoinTaskAndKanbanTdo) {
-    return this.JoinTasks.deleteTask(req);
+  deleteTask(
+    @Body() req: { data: DeleteJoinTaskAndKanbanTdo[] },
+    @Res() res: any,
+  ) {
+    return this.JoinTasks.deleteTask(req.data, res);
   }
 }

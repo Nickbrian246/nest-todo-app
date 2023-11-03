@@ -34,6 +34,9 @@ export class Task {
     trim: true,
   })
   client: string;
+
+  @Prop({ required: false })
+  commonId: string;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

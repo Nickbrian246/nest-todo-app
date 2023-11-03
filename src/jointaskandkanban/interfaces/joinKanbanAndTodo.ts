@@ -4,4 +4,5 @@ export interface JoinKanbanAndToDo {
   description?: string;
   taskStatus: string;
   client: string;
+  commonId: string;
 }

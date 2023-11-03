@@ -27,6 +27,9 @@ export class TodoTask {
     trim: true,
   })
   client: string;
+
+  @Prop({ required: false })
+  commonId: string;
 }
 
 export const TodoTaskSchema = SchemaFactory.createForClass(TodoTask);

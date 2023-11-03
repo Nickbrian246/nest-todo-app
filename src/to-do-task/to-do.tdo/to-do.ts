@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsBoolean } from 'class-validator';
+import { IsString, IsNotEmpty, IsBoolean, IsOptional } from 'class-validator';
 export class CreateToDoDto {
   @IsString()
   @IsNotEmpty()
@@ -11,6 +11,10 @@ export class CreateToDoDto {
   @IsString()
   @IsNotEmpty()
   client: string;
+
+  @IsOptional()
+  @IsString()
+  commonId: string;
 }
 
 export class UpdateToDoDto {
@@ -29,6 +33,10 @@ export class UpdateToDoDto {
   @IsString()
   @IsNotEmpty()
   id: string;
+
+  @IsOptional()
+  @IsString()
+  commonId: string;
 }
 
 export class DeleteToDoDto {
@@ -39,6 +47,10 @@ export class DeleteToDoDto {
   @IsString()
   @IsNotEmpty()
   id: string;
+
+  @IsOptional()
+  @IsString()
+  commonId: string;
 }
 export class FindByClinetToDoDto {
   client: string;
