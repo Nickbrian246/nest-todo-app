@@ -20,6 +20,12 @@ export class Task {
   @IsString()
   client: string;
 }
+
+export class GetTaskByClient {
+  @IsNotEmpty()
+  @IsString()
+  client: string;
+}
 export class UpdateTask {
   @IsString()
   @IsOptional()

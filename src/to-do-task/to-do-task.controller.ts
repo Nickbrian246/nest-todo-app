@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Res,
 } from '@nestjs/common';
 import {
   CreateToDoDto,
@@ -30,17 +31,17 @@ export class ToDoTaskController {
   }
 
   @Post()
-  createTask(@Body() req: CreateToDoDto) {
-    return this.ToDoTaskService.createToDo(req);
+  createTask(@Body() req: { data: CreateToDoDto[] }, @Res() res: any) {
+    return this.ToDoTaskService.createToDo(req.data, res);
   }
 
   @Put()
-  updateTask(@Body() req: UpdateToDoDto) {
-    return this.ToDoTaskService.updatToDo(req);
+  updateTask(@Body() req: { data: UpdateToDoDto[] }, @Res() res: any) {
+    return this.ToDoTaskService.updatToDo(req.data, res);
   }
 
   @Delete()
-  deleteTask(@Body() req: DeleteToDoDto) {
-    return this.ToDoTaskService.deleteToDo(req);
+  deleteTask(@Body() req: { data: DeleteToDoDto[] }, @Res() res: any) {
+    return this.ToDoTaskService.deleteToDo(req.data, res);
   }
 }

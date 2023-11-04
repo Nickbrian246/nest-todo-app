@@ -121,7 +121,9 @@ export class JointaskandkanbanService {
         }
       });
       await Promise.all(deleteTasks);
-      return res.status(HttpStatus.OK).json({ message: 'proceso exitoso' });
+      return res
+        .status(HttpStatus.OK)
+        .json({ message: 'Elementos eliminados con exito' });
     } catch (error) {
       console.log(error);
       return new HttpException(`error ${error}`, HttpStatus.BAD_REQUEST);
