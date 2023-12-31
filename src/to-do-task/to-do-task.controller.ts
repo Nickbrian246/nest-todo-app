@@ -17,7 +17,7 @@ import {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ToDoTaskService } from './to-do-task.service';
 
-@Controller('to-do-task')
+@Controller('v1/to-do-task')
 export class ToDoTaskController {
   constructor(private ToDoTaskService: ToDoTaskService) {}
 

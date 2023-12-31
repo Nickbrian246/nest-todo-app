@@ -6,7 +6,7 @@ import {
   DeleteJoinTaskAndKanbanTdo,
 } from './tdo';
 
-@Controller('jointaskandkanban')
+@Controller('v1/jointaskandkanban')
 export class JointaskandkanbanController {
   constructor(private JoinTasks: JointaskandkanbanService) {}
 

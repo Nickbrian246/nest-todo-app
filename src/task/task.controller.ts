@@ -13,7 +13,7 @@ import { Task, DeleteTask, UpdateTask } from './dto';
 //nota controller clinte
 // service base de datos
 // ToDo controller
-@Controller('task')
+@Controller('v1/task')
 export class TaskController {
   constructor(private tasksService: TaskService) {}
 

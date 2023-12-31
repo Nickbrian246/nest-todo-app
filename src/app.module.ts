@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ToDoTaskModule } from './to-do-task/to-do-task.module';
 import { ConfigModule } from '@nestjs/config';
 import { JointaskandkanbanModule } from './jointaskandkanban/jointaskandkanban.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { JointaskandkanbanModule } from './jointaskandkanban/jointaskandkanban.m
     MongooseModule.forRoot(`${process.env.DB_URI}`),
     ToDoTaskModule,
     JointaskandkanbanModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
